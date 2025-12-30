@@ -10,7 +10,7 @@ Ele fornece métricas de CPU, memória, processos, Health Score e diagnósticos 
 - **Status do sistema:** CPU, memória e Health Score
 - **Diagnósticos inteligentes:** alertas sobre alto consumo com recomendações
 - **Top processos:** visualização dos processos que mais consomem CPU ou memória
-- **Cross-platform:** funciona em Windows, Linux e macOS
+- **Cross-platform:** funcionar para Windows, Linux e macOS
 - **CLI profissional:** comandos intuitivos e fáceis de usar
 
 ---
