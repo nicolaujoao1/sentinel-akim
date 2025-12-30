@@ -3,8 +3,24 @@ package scorer
 import "github.com/nicolaujoao1/sentinel-akim/internal/models"
 
 func CalculateHealth(cpuPercent, memPercent float64) models.HealthReport {
-	score := 100
+	score := finalScore(cpuPercent, memPercent)
 
+	status := "OK"
+	if score < 70 {
+		status = "WARNING"
+	}
+	if score < 40 {
+		status = "CRITICAL"
+	}
+
+	return models.HealthReport{
+		Score:  score,
+		Status: status,
+	}
+
+}
+func finalScore(cpuPercent, memPercent float64) int {
+	score := 100
 	if cpuPercent > 80 {
 		score -= 30
 	} else if cpuPercent > 60 {
@@ -20,17 +36,6 @@ func CalculateHealth(cpuPercent, memPercent float64) models.HealthReport {
 	} else if memPercent > 40 {
 		score -= 10
 	}
+	return score
 
-	status := "OK"
-	if score < 70 {
-		status = "WARNING"
-	}
-	if score < 40 {
-		status = "CRITICAL"
-	}
-
-	return models.HealthReport{
-		Score:  score,
-		Status: status,
-	}
 }
